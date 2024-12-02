@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manager Dashboard</title>
+  <!-- Favicons -->
+  <link rel="icon" href="images/p.jpg" type="image/gif" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+  <!-- Header -->
+  <header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+    <a href="/managerdashboard" class="logo d-flex align-items-center justify-content-center">
+      <h1 class="sitename">Manager Dashboard</h1>
+    </a>
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="/managerdashboard" class="active"><i class="bi bi-house navicon"></i> Home</a></li>
+        <li><a href="/addPackage"><i class="bi bi-plus-circle navicon"></i> Add Package</a></li>
+        <li><a href="/managertransactions"><i class="bi bi-file-earmark-text navicon"></i> View Transactions</a></li>
+        <li><a href="/logout"><i class="bi bi-box-arrow-right navicon"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <section id="welcome" class="section light-background">
+      <div class="container text-center" data-aos="fade-up">
+        <h2>Welcome to the Manager Dashboard, <%= user.name %>!</h2>
+        <p>Manage your packages and transactions seamlessly.</p>
+      </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" >
+      <div class="container" data-aos="fade-up">
+        <h3 class="section-title">Available Packages</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% packages.forEach(function(package) { %>
+              <tr>
+                <td><%= package.name %></td>
+                <td><%= package.description %></td>
+                <td>$<%= package.price %></td>
+                <td>
+                    <div class="btn-group">
+                        <form action="/purchase/<%= package._id %>" method="get">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fas fa-shopping-cart"></i> Purchase
+                            </button>
+                        </form>
+                        <form action="/managerdashboard/updatePackage/<%= package._id %>" method="get">
+                            <button type="submit" class="btn btn-warning btn-sm">
+                                <i class="fas fa-edit"></i> Update
+                            </button>
+                        </form>
+                        <form action="/managerdashboard/deletePackage/<%= package._id %>" method="post">
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i> Delete
+                            </button>
+                        </form>
+                    </div>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container text-center">
+      <p>© <strong>Manager Dashboard</strong> All Rights Reserved.</p>
+      <p>Designed with <a href="https://bootstrapmade.com/">iPortfolio Template</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/aos/aos.js"></script>
+  <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="/assets/js/main.js"></script>
+</body>
+
+</html>

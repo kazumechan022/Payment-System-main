@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Package</title>
+
+    <!-- Favicons -->
+    <link rel="icon" href="images/p.jpg" type="image/gif" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+    <!-- Header -->
+    <header id="header" class="header dark-background d-flex flex-column">
+        <i class="header-toggle d-xl-none bi bi-list"></i>
+        <a href="/" class="logo d-flex align-items-center justify-content-center">
+            <h1 class="sitename">Manager Dashboard</h1>
+        </a>
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="/managerdashboard"><i class="bi bi-house navicon"></i> Dashboard</a></li>
+                <li><a href="/managertransactions"><i class="bi bi-file-earmark-text navicon"></i> Transactions</a></li>
+                <li><a href="/addPackage"><i class="bi bi-plus-circle navicon"></i> Add Package</a></li>
+                <li><a href="/logout"><i class="bi bi-box-arrow-right navicon"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <section id="purchase-package" class="section light-background">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Purchase Package</h2>
+
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <form action="/purchase/<%= package._id %>" method="post" class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <h4 class="mb-3">Package Details</h4>
+                                <p><strong>Package:</strong> <%= package.name %></p>
+                                <p><strong>Price:</strong> $<%= package.price.toFixed(2) %></p>
+                                <p><strong>Manager Branch:</strong> <%= user.address.branch %></p> <!-- Display manager's branch -->
+                            </div>
+
+                            <div class="form-group">
+                                <h4 class="mb-3">Client Details</h4>
+                                <label for="clientName">Client Name</label>
+                                <input type="text" class="form-control" name="clientName" id="clientName" placeholder="Enter client's name" required>
+
+                                <label for="clientPhone" class="mt-2">Client Phone Number</label>
+                                <input type="tel" class="form-control" name="clientPhone" id="clientPhone" placeholder="Enter client's phone number" required>
+
+                                <label for="clientEmail" class="mt-2">Client Email</label>
+                                <input type="email" class="form-control" name="clientEmail" id="clientEmail" placeholder="Enter client's email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <h4 class="mb-3">Payment Details</h4>
+                                <label for="paymentAmount">Payment Amount</label>
+                                <input type="number" class="form-control" name="paymentAmount" id="paymentAmount" placeholder="Enter payment amount" step="0.01" required>
+
+                                <label for="paymentStatus" class="mt-2">Payment Status</label>
+                                <select class="form-control" name="paymentStatus" id="paymentStatus" required>
+                                    <option value="" disabled selected>Select payment status</option>
+                                    <option value="installment">Installment</option>
+                                    <option value="fullypaid">Fully Paid</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block mt-4">Confirm Purchase</button>
+                        </form>
+
+                        <div class="text-center mt-3">
+                            <a href="/managerdashboard" class="btn btn-link">Back to Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer position-relative light-background">
+        <div class="container text-center">
+            <p>© <strong>Manager Dashboard</strong> All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/typed.js/typed.umd.js"></script>
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+
+    <script>
+        // Dynamically adjust the max payment amount based on the payment status
+        const paymentStatusField = document.getElementById('paymentStatus');
+        const paymentAmountField = document.getElementById('paymentAmount');
+        paymentStatusField.addEventListener('change', () => {
+            if (paymentStatusField.value === 'fullypaid') {
+                paymentAmountField.setAttribute('max', '<%= package.price %>');
+                paymentAmountField.value = '<%= package.price %>';
+            } else {
+                paymentAmountField.removeAttribute('max');
+                paymentAmountField.value = '';
+            }
+        });
+    </script>
+</body>
+
+</html>

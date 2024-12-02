@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <!-- Favicons -->
+    <link rel="icon" href="images/p.jpg" type="image/gif" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+    <!-- Header -->
+    <header id="header" class="header dark-background d-flex flex-column">
+        <i class="header-toggle d-xl-none bi bi-list"></i>
+        <a href="/admindashboard" class="logo d-flex align-items-center justify-content-center">
+            <h1 class="sitename">Admin Dashboard</h1>
+        </a>
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="/admindashboard" class="active"><i class="bi bi-house navicon"></i> Home</a></li>
+                <li><a href="/addManager"><i class="bi bi-person-plus navicon"></i> Add Admin</a></li>
+                <li><a href="/transactions-by-branch"><i class="bi bi-person-plus navicon"></i>Transactions by Branch</a></li>
+                <li><a href="/logout"><i class="bi bi-box-arrow-right navicon"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <section id="dashboard" class="section light-background">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Admin Dashboard</h2>
+                <p class="text-center">Welcome, <%= user.name %>! You are logged in as a General Admin.</p>
+
+                <!-- User Management -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3 class="card-title">User Management</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% users.forEach(function(user) { %>
+                                        <tr>
+                                            <td><%= user.name %></td>
+                                            <td><%= user.email %></td>
+                                            <td><%= user.role %></td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer position-relative light-background">
+        <div class="container text-center">
+            <p>© <strong>Admin Dashboard</strong> All Rights Reserved.</p>
+            <p>Designed with <a href="https://bootstrapmade.com/">iPortfolio Template</a>.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/typed.js/typed.umd.js"></script>
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>

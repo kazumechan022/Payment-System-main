@@ -1,0 +1,241 @@
+/* General Custom Styles for Responsive Design */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Container styles */
+.container {
+    padding: 20px;
+}
+
+h2, h3 {
+    font-size: 1.5rem;
+    color: #343a40;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #343a40;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+}
+
+table td {
+    background-color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Button Styles */
+button, .btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-sm {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .table th, .table td {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    input, select, textarea {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .table th, .table td {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+
+    input, select, textarea {
+        font-size: 0.8rem;
+        padding: 6px;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.mb-3 {
+    margin-bottom: 15px;
+}
+
+.mt-3 {
+    margin-top: 15px;
+}
+
+.mt-1 {
+    margin-top: 5px;
+}
+
+/* Sidebar Styles */
+.main-sidebar {
+    width: 250px;
+    background-color: #343a40;
+}
+
+.main-sidebar .nav-item {
+    position: relative;
+}
+
+.main-sidebar .nav-item .nav-link {
+    color: #ddd;
+    font-size: 1rem;
+    padding: 15px 20px;
+    display: block;
+    border-bottom: 1px solid #444;
+}
+
+.main-sidebar .nav-item .nav-link:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.main-sidebar .nav-item .nav-link i {
+    margin-right: 10px;
+}
+
+/* Add class for active and open items */
+.main-sidebar .nav-item.active > .nav-link {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Dropdown (tree structure) styles */
+.main-sidebar .nav-item .nav-tree {
+    display: none;
+    padding-left: 20px;
+}
+
+.main-sidebar .nav-item.open > .nav-tree {
+    display: block;
+}
+
+.main-sidebar .nav-item .nav-tree .nav-item {
+    border-bottom: none;
+    padding-left: 30px;
+}
+
+@media (max-width: 768px) {
+    .main-header .navbar-toggler {
+        display: inline-block;
+    }
+
+    .main-sidebar {
+        display: none;
+    }
+
+    .main-sidebar.sidebar-open {
+        display: block;
+        position: absolute;
+        z-index: 1030;
+        width: 250px;
+    }
+
+    .content-wrapper {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .main-sidebar {
+        display: block;
+    }
+
+    .content-wrapper {
+        margin-left: 250px;
+    }
+}

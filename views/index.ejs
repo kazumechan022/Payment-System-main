@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="/style.css"> <!-- Your custom styles -->
+    <link rel="icon" href="images/p.jpg" type="image/gif" />
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form action="/sign_up" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required />
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" id="age" name="age" placeholder="Enter your age" required />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="form-group">
+                <label for="phno">Mobile</label>
+                <input type="text" class="form-control" id="phno" name="phno" placeholder="Enter your mobile number" required />
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" name="gender" required>
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="barangay">Barangay</label>
+                <input type="text" class="form-control" id="barangay" name="address[barangay]" placeholder="Enter barangay" required />
+            </div>
+
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <select class="form-control" id="branch" name="address[branch]" required>
+                    <option value="" disabled selected>Select branch</option>
+                    <option value="Calapan">Calapan</option>
+                    <option value="Victoria">Victoria</option>
+                    <option value="Bansud">Bansud</option>
+                    <option value="Bongabong">Bongabong</option>
+                    <option value="Roxas">Roxas</option>
+                    <option value="Mansalay">Mansalay</option>
+                    <option value="Pinamalayan">Pinamalayan</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <p class="mt-3 mb-1">
+                <a href="/login">Already have account?</a>
+            </p>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Admin</title>
+
+    <link rel="icon" href="images/p.jpg" type="image/gif" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+    <!-- Header -->
+    <header id="header" class="header dark-background d-flex flex-column">
+        <i class="header-toggle d-xl-none bi bi-list"></i>
+        <a href="/admindashboard" class="logo d-flex align-items-center justify-content-center">
+            <h1 class="sitename">Admin Panel</h1>
+        </a>
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="/admindashboard"><i class="bi bi-house navicon"></i> Dashboard</a></li>
+                <li><a href="/logout"><i class="bi bi-box-arrow-right navicon"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <section id="add-admin" class="section light-background">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Add New Admin</h2>
+
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <form action="/addManager" method="POST" class="needs-validation" novalidate>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter admin's name" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="age">Age</label>
+                                    <input type="text" class="form-control" id="age" name="age" placeholder="Enter admin's age" required />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter admin's email" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="phno">Mobile</label>
+                                    <input type="text" class="form-control" id="phno" name="phno" placeholder="Enter mobile number" required />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="gender">Gender</label>
+                                    <select class="form-control" id="gender" name="gender" required>
+                                        <option value="" disabled selected>Select gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="barangay">Barangay</label>
+                                    <input type="text" class="form-control" id="barangay" name="address[barangay]" placeholder="Enter barangay" required />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="branch">Branch</label>
+                                    <select class="form-control" id="branch" name="address[branch]" required>
+                                        <option value="" disabled selected>Select branch</option>
+                                        <option value="Calapan">Calapan</option>
+                                        <option value="Victoria">Victoria</option>
+                                        <option value="Bansud">Bansud</option>
+                                        <option value="Bongabong">Bongabong</option>
+                                        <option value="Roxas">Roxas</option>
+                                        <option value="Mansalay">Mansalay</option>
+                                        <option value="Pinamalayan">Pinamalayan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="role">Role</label>
+                                    <select class="form-control" id="role" name="role" required>
+                                        <option value="" disabled selected>Select role</option>
+                                        <option value="generalAdmin">General Admin</option>
+                                        <option value="manager">Branch Manager</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required />
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Add Admin</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer position-relative light-background">
+        <div class="container text-center">
+            <p>© <strong>Admin Panel</strong> All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/typed.js/typed.umd.js"></script>
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>

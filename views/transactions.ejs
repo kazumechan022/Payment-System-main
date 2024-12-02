@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Transactions</title>
+    <!-- Favicons -->
+    <link rel="icon" href="images/p.jpg" type="image/gif" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+    <!-- Header -->
+    <header id="header" class="header dark-background d-flex flex-column">
+        <i class="header-toggle d-xl-none bi bi-list"></i>
+        <a href="/managerdashboard" class="logo d-flex align-items-center justify-content-center">
+            <h1 class="sitename">Manager Dashboard</h1>
+        </a>
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="/managerdashboard"><i class="bi bi-house navicon"></i> Home</a></li>
+                <li><a href="/addPackage"><i class="bi bi-plus-circle navicon"></i> Add Package</a></li>
+                <li><a href="/managertransactions" class="active"><i class="bi bi-file-earmark-text navicon"></i> View Transactions</a></li>
+                <li><a href="/logout"><i class="bi bi-box-arrow-right navicon"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <section id="transactions" class="section light-background">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Transaction History</h2>
+                <p class="text-center">Here are all the transactions made by <%= user.name %>.</p>
+
+                <!-- Search Bar -->
+                <form action="/transactions/search" method="GET" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" name="query" class="form-control" placeholder="Search by client name" value="<%= typeof query !== 'undefined' ? query : '' %>">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i> Search</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Transactions Table -->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Package Name</th>
+                                <th>Client Name</th>
+                                <th>Payment Amount</th>
+                                <th>Remaining Balance</th>
+                                <th>Payment Status</th>
+                                <th>Transaction Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% transactions.forEach(function(transaction) { %>
+                                <tr>
+                                    <td><%= transaction.packageName %></td>
+                                    <td><%= transaction.clientName %></td>
+                                    <td>$<%= transaction.paymentAmount %></td>
+                                    <td>$<%= transaction.remainingBalance.toFixed(2) %></td>
+                                    <td><%= transaction.paymentStatus %></td>
+                                    <td><%= transaction.date.toISOString().slice(0, 10) %></td>
+                                    <td>
+                                        <form action="/transactions/delete/<%= transaction._id %>" method="POST">
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this transaction?')">
+                                                <i class="bi bi-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer position-relative light-background">
+        <div class="container text-center">
+            <p>© <strong>Manager Dashboard</strong> All Rights Reserved.</p>
+            <p>Designed with <a href="https://bootstrapmade.com/">iPortfolio Template</a>.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/typed.js/typed.umd.js"></script>
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
